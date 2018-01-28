@@ -83,7 +83,9 @@ extern "C" DWORD_PTR GetCoreBase()
 	PVOID const textBase = ImageRvaToVa(img.FileHeader, img.MappedAddress, text->VirtualAddress, nullptr); // https://msdn.microsoft.com/ja-jp/library/windows/desktop/ms680218(v=vs.85).aspx
 	PVOID const dataBase = ImageRvaToVa(img.FileHeader, img.MappedAddress, data->VirtualAddress, nullptr); // data->VirtualAddressの値はImageBaseからの相対値ということで実際にはRVA。これをVAに変換する
 	PVOID const rdataBase = ImageRvaToVa(img.FileHeader, img.MappedAddress, rdata->VirtualAddress, nullptr);
-	// 単にVirutalSizeでも良さそうだが、SectionAlignmentを考慮して余計に追加している。
+	// 単にVirtualSizeでも良さそうだが、SectionAlignmentを考慮して余計に追加している。
+	// https://twitter.com/sakra_yukikaze/status/957634400660865024
+	// https://twitter.com/sakra_yukikaze/status/957635347353034752
 	DWORD const textSize = (text->Misc.VirtualSize + img.FileHeader->OptionalHeader.SectionAlignment - 1) & ~(img.FileHeader->OptionalHeader.SectionAlignment - 1);
 	DWORD const dataSize = (data->Misc.VirtualSize + img.FileHeader->OptionalHeader.SectionAlignment - 1) & ~(img.FileHeader->OptionalHeader.SectionAlignment - 1);
 	DWORD const rdataSize = (rdata->Misc.VirtualSize + img.FileHeader->OptionalHeader.SectionAlignment - 1) & ~(img.FileHeader->OptionalHeader.SectionAlignment - 1);
