@@ -18,9 +18,15 @@
     <ClInclude Include="TH155AddrDef.hpp">
       <Filter>ヘッダー ファイル</Filter>
     </ClInclude>
+    <ClInclude Include="Occult.hpp">
+      <Filter>ヘッダー ファイル</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="TH155Addr.cpp">
+      <Filter>ソース ファイル</Filter>
+    </ClCompile>
+    <ClCompile Include="Occult.cpp">
       <Filter>ソース ファイル</Filter>
     </ClCompile>
   </ItemGroup>
@@ -29,5 +35,10 @@
       <Filter>ソース ファイル</Filter>
     </None>
     <None Include="TH155Addr.ini" />
+  </ItemGroup>
+  <ItemGroup>
+    <MASM Include="OccultHelper.asm">
+      <Filter>ソース ファイル</Filter>
+    </MASM>
   </ItemGroup>
 </Project>

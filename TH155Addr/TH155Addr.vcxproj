@@ -100,14 +100,19 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="Occult.hpp" />
     <ClInclude Include="TH155AddrDef.hpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="Occult.cpp" />
     <ClCompile Include="TH155Addr.cpp" />
   </ItemGroup>
   <ItemGroup>
     <None Include="TH155Addr.def" />
     <None Include="TH155Addr.ini" />
+  </ItemGroup>
+  <ItemGroup>
+    <MASM Include="OccultHelper.asm" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
