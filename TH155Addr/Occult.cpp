@@ -63,8 +63,8 @@ extern "C" DWORD_PTR GetCoreBase()
 {
 	/*
 	やってることを大ざっぱに。
-	1. SQVMのRTTI(TypeDiscriptor)を見つける
-	2. TypeDiscriptor、RTTICompleteObjectLocatorと辿って、SQVMのvtableの先頭を見つける
+	1. SQVMのRTTI(TypeDescriptor)を見つける
+	2. TypeDescriptor、RTTICompleteObjectLocatorと辿って、SQVMのvtableの先頭を見つける
 	3. vtableのアドレスを代入するコードがSQVMのコンストラクタなはず、ということでSQVMのコンストラクタを見つける
 	4. SQVMのコンストラクタ、sq_open、mysq_createと呼び出し元を辿る
 	5. mysq_createの呼び出し元で、戻り値をグローバル変数に格納するコードを探し、そのグローバル変数のアドレスを特定する。
@@ -110,7 +110,7 @@ extern "C" DWORD_PTR GetCoreBase()
 	DWORD_PTR const sqvmRttiStrRef = sqvmRttiStr - 8 - static_cast<LPBYTE>(dataBase) + img.FileHeader->OptionalHeader.ImageBase + data->VirtualAddress;
 
 	LPCBYTE const sqvmRtti = static_cast<LPCBYTE>(memmem(rdataBase, rdataSize, &sqvmRttiStrRef, sizeof DWORD_PTR));
-	// rdataからTypeDiscriptorを参照する部分を探す。ここで見つけたのはおそらくRTTICompleteObjectLocator.pTypeDescriptor
+	// rdataからTypeDescriptorを参照する部分を探す。ここで見つけたのはおそらくRTTICompleteObjectLocator.pTypeDescriptor
 	// http://www.openrce.org/articles/full_view/23
 	/*
 	struct RTTICompleteObjectLocator
